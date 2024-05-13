@@ -3,9 +3,11 @@ import pygame
 class Fighter():
     def __init__(self, x, y):
         self.rect = pygame.Rect((x, y, 160, 300))
+        self.vel_y = 0
 
-    def move(self):
+    def move(self, screen_width, screen_height):
         SPEED = 10
+        GRAVITY = 2
         dx = 0
         dy = 0
 
@@ -16,9 +18,29 @@ class Fighter():
         #movement
         if key[pygame.K_a]:
             dx = -SPEED
-
-        if key[pygame.K_w]:
+        if key[pygame.K_d]:
             dx = SPEED
+        #jump
+        if key[pygame.K_w]:
+            self.vel_y = -30
+        #apply gravity
+        self.vel_y += GRAVITY
+        dy = self.vel_y
+
+
+        #ensure player stays on screen
+        if self.rect.left + dx < 0:
+            dx = -self.rect.left
+        if self.rect.right + dx > screen_width:
+            dx = screen_width - self.rect.right
+        if self.rect.bottom + dy > screen_height - 70:
+            self.vel_y = 0
+            dy = screen_height - 70 - self.rect.bottom
+
+        print(dy)
+
+        self.rect.x += dx
+        self.rect.y += dy
 
 
 
