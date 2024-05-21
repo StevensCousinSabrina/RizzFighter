@@ -21,6 +21,9 @@ WHITE = (255, 255, 255)
 # load background image
 bg_image = pygame.image.load("assets/images/backgrounds/plane.gif").convert_alpha()
 
+#load spritesheets
+    warrior_sheets = pygame.image.load()
+
 
 # function for drawing background
 def draw_bg():
