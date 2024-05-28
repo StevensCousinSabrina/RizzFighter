@@ -22,9 +22,16 @@ WHITE = (255, 255, 255)
 bg_image = pygame.image.load("assets/images/backgrounds/plane.gif").convert_alpha()
 
 #load spritesheets
-    warrior_sheets = pygame.image.load()
+wizard_sheets = pygame.image.load("assets/Fighters/Evil Wizard/EvilWizard.png").convert_alpha()
+warrior_sheets = pygame.image.load("assets/Fighters/Fantasy Warrior/FantasyWarrior.png").convert_alpha()
+martial2_sheets = pygame.image.load("assets/Fighters/Martial Hero 2/MartialHero2.png").convert_alpha()
+martial3_sheets = pygame.image.load("assets/Fighters/Martial Hero 3/MartialHero3.png").convert_alpha()
 
-
+#define number of steps in each animation
+WIZARD_ANIMATION_STEPS = [8, 5, 8, 8, 4]
+WARRIOR_ANIMATION_STEPS = [7, 7, 8, 7, 3, 10, 3, 8, 3]
+MARTIAL2_ANIMATION_STEPS = [4, 4, 7, 2, 4, 2, 8, 3]
+MARTIAL3_ANIMATION_STEPS = []
 # function for drawing background
 def draw_bg():
     scaled_bg = pygame.transform.scale(bg_image, (SCREEN_WIDTH, SCREEN_HEIGHT))
