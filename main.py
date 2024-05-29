@@ -18,20 +18,28 @@ RED = (255, 0, 0)
 YELLOW = (255, 255, 0)
 WHITE = (255, 255, 255)
 
+#define fighter variables
+WARRIOR_SIZE = 162
+WARRIOR_DATA = [WARRIOR_SIZE]
+WIZARD_SIZE = 150
+WIZARD_DATA = [WIZARD_SIZE]
+
 # load background image
 bg_image = pygame.image.load("assets/images/backgrounds/plane.gif").convert_alpha()
 
-#load spritesheets
+# load spritesheets
 wizard_sheets = pygame.image.load("assets/Fighters/Evil Wizard/EvilWizard.png").convert_alpha()
 warrior_sheets = pygame.image.load("assets/Fighters/Fantasy Warrior/FantasyWarrior.png").convert_alpha()
 martial2_sheets = pygame.image.load("assets/Fighters/Martial Hero 2/MartialHero2.png").convert_alpha()
 martial3_sheets = pygame.image.load("assets/Fighters/Martial Hero 3/MartialHero3.png").convert_alpha()
 
-#define number of steps in each animation
+# define number of steps in each animation
 WIZARD_ANIMATION_STEPS = [8, 5, 8, 8, 4]
 WARRIOR_ANIMATION_STEPS = [7, 7, 8, 7, 3, 10, 3, 8, 3]
 MARTIAL2_ANIMATION_STEPS = [4, 4, 7, 2, 4, 2, 8, 3]
-MARTIAL3_ANIMATION_STEPS = []
+MARTIAL3_ANIMATION_STEPS = [7, 6, 9, 11, 3, 3, 10, 8, 3]
+
+
 # function for drawing background
 def draw_bg():
     scaled_bg = pygame.transform.scale(bg_image, (SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -41,14 +49,21 @@ def draw_bg():
 # function for drawing fighter health bars
 def draw_health_bar(health, x, y):
     ratio = health / 100
-    pygame.draw.rect(screen, WHITE, (x-5, y-5, 435, 40))
+    pygame.draw.rect(screen, WHITE, (x - 5, y - 5, 435, 40))
     pygame.draw.rect(screen, RED, (x, y, 425, 30))
-    pygame.draw.rect(screen, YELLOW, (x, y, 425*ratio, 30))
+    pygame.draw.rect(screen, YELLOW, (x, y, 425 * ratio, 30))
 
+
+character1 = warrior_sheets
+character1_sheet = WARRIOR_ANIMATION_STEPS
+character1_data = WARRIOR_DATA
+character2 = wizard_sheets
+character2_sheet = WIZARD_ANIMATION_STEPS
+character2_data = WIZARD_DATA
 
 # create two instances of fighters
-fighter_1 = Fighter(200, 350)
-fighter_2 = Fighter(1000, 350)
+fighter_1 = Fighter(200, 350, character1_data, character1, character1_sheet)
+fighter_2 = Fighter(1000, 350, character2_data, character2, character2_sheet)
 
 # game loop
 run = True
