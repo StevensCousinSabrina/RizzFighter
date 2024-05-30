@@ -20,9 +20,13 @@ WHITE = (255, 255, 255)
 
 #define fighter variables
 WARRIOR_SIZE = 162
-WARRIOR_DATA = [WARRIOR_SIZE]
+WARRIOR_SCALE = 6
+WARRIOR_OFFSET = [65,52]
+WARRIOR_DATA = [WARRIOR_SIZE, WARRIOR_SCALE, WARRIOR_OFFSET]
 WIZARD_SIZE = 150
-WIZARD_DATA = [WIZARD_SIZE]
+WIZARD_SCALE = 5.5
+WIZARD_OFFSET = [60, 50]
+WIZARD_DATA = [WIZARD_SIZE, WIZARD_SCALE, WIZARD_OFFSET]
 
 # load background image
 bg_image = pygame.image.load("assets/images/backgrounds/plane.gif").convert_alpha()
