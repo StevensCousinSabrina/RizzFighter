@@ -25,7 +25,7 @@ WARRIOR_OFFSET = [65,52]
 WARRIOR_DATA = [WARRIOR_SIZE, WARRIOR_SCALE, WARRIOR_OFFSET]
 WIZARD_SIZE = 150
 WIZARD_SCALE = 5.5
-WIZARD_OFFSET = [60, 50]
+WIZARD_OFFSET = [100, 100]
 WIZARD_DATA = [WIZARD_SIZE, WIZARD_SCALE, WIZARD_OFFSET]
 
 # load background image
@@ -38,10 +38,10 @@ martial2_sheets = pygame.image.load("assets/Fighters/Martial Hero 2/MartialHero2
 martial3_sheets = pygame.image.load("assets/Fighters/Martial Hero 3/MartialHero3.png").convert_alpha()
 
 # define number of steps in each animation
-WIZARD_ANIMATION_STEPS = [8, 5, 8, 8, 4]
-WARRIOR_ANIMATION_STEPS = [7, 7, 8, 7, 3, 10, 3, 8, 3]
-MARTIAL2_ANIMATION_STEPS = [4, 4, 7, 2, 4, 2, 8, 3]
-MARTIAL3_ANIMATION_STEPS = [7, 6, 9, 11, 3, 3, 10, 8, 3]
+WIZARD_ANIMATION_STEPS = [8, 8, 2, 8, 8, 3, 7]
+WARRIOR_ANIMATION_STEPS = [10, 8, 3, 7, 7, 3, 7]
+MARTIAL2_ANIMATION_STEPS = [4, 8, 2, 4, 4, 3, 7]
+MARTIAL3_ANIMATION_STEPS = [10, 8, 3, 7, 6, 3, 11]
 
 
 # function for drawing background
