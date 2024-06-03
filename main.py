@@ -20,12 +20,12 @@ WHITE = (255, 255, 255)
 
 #define fighter variables
 WARRIOR_SIZE = 162
-WARRIOR_SCALE = 6
-WARRIOR_OFFSET = [65,52]
+WARRIOR_SCALE = 7
+WARRIOR_OFFSET = [69,57]
 WARRIOR_DATA = [WARRIOR_SIZE, WARRIOR_SCALE, WARRIOR_OFFSET]
-WIZARD_SIZE = 150
-WIZARD_SCALE = 5.5
-WIZARD_OFFSET = [100, 100]
+WIZARD_SIZE = 250
+WIZARD_SCALE = 6
+WIZARD_OFFSET = [112, 116]
 WIZARD_DATA = [WIZARD_SIZE, WIZARD_SCALE, WIZARD_OFFSET]
 
 # load background image
@@ -66,8 +66,8 @@ character2_sheet = WIZARD_ANIMATION_STEPS
 character2_data = WIZARD_DATA
 
 # create two instances of fighters
-fighter_1 = Fighter(200, 350, character1_data, character1, character1_sheet)
-fighter_2 = Fighter(1000, 350, character2_data, character2, character2_sheet)
+fighter_1 = Fighter(200, 350, False, character1_data, character1, character1_sheet)
+fighter_2 = Fighter(1000, 350, True, character2_data, character2, character2_sheet)
 
 # game loop
 run = True
@@ -83,6 +83,10 @@ while run:
 
     fighter_1.move(SCREEN_WIDTH, SCREEN_HEIGHT, screen, fighter_2)
     # fighter_2.move()
+
+    #update fighters
+    fighter_1.update()
+    fighter_2.update()
 
     # draw fighters
     fighter_1.draw(screen)
