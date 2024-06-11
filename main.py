@@ -18,6 +18,11 @@ RED = (255, 0, 0)
 YELLOW = (255, 255, 0)
 WHITE = (255, 255, 255)
 
+#define game variables
+intro_count = 3
+last_count_update = pygame.time.get_ticks()
+
+
 #define fighter variables
 WARRIOR_SIZE = 162
 WARRIOR_SCALE = 7
@@ -27,6 +32,10 @@ WIZARD_SIZE = 250
 WIZARD_SCALE = 6
 WIZARD_OFFSET = [112, 116]
 WIZARD_DATA = [WIZARD_SIZE, WIZARD_SCALE, WIZARD_OFFSET]
+MARTIAL2_SIZE = 162
+MARTIAL2_SCALE = 5
+MARTIAL2_OFFSET = [100, 100]
+MARTIAL2_DATA = [MARTIAL2_SIZE, MARTIAL2_SCALE, MARTIAL2_OFFSET]
 
 # load background image
 bg_image = pygame.image.load("assets/images/backgrounds/plane.gif").convert_alpha()
@@ -61,13 +70,13 @@ def draw_health_bar(health, x, y):
 character1 = warrior_sheets
 character1_sheet = WARRIOR_ANIMATION_STEPS
 character1_data = WARRIOR_DATA
-character2 = wizard_sheets
-character2_sheet = WIZARD_ANIMATION_STEPS
-character2_data = WIZARD_DATA
+character2 = martial2_sheets
+character2_sheet = MARTIAL2_ANIMATION_STEPS
+character2_data = MARTIAL2_DATA
 
 # create two instances of fighters
-fighter_1 = Fighter(200, 350, False, character1_data, character1, character1_sheet)
-fighter_2 = Fighter(1000, 350, True, character2_data, character2, character2_sheet)
+fighter_1 = Fighter(1, 200, 350, False, character1_data, character1, character1_sheet)
+fighter_2 = Fighter(2, 1000, 350, True, character2_data, character2, character2_sheet)
 
 # game loop
 run = True
@@ -81,8 +90,19 @@ while run:
     draw_health_bar(fighter_1.health, 20, 20)
     draw_health_bar(fighter_2.health, 1011, 20)
 
-    fighter_1.move(SCREEN_WIDTH, SCREEN_HEIGHT, screen, fighter_2)
-    # fighter_2.move()
+    if intro_count <= 0:
+        #move fighters
+        fighter_1.move(SCREEN_WIDTH, SCREEN_HEIGHT, screen, fighter_2)
+        fighter_2.move(SCREEN_WIDTH, SCREEN_HEIGHT, screen, fighter_1)
+    else:
+        #update count timer
+        if pygame.time.get_ticks() - last_count_update >= 1000:
+            intro_count -= 1
+            last_count_update = pygame.time.get_ticks()
+        print(intro_count)
+
+
+
 
     #update fighters
     fighter_1.update()
