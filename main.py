@@ -129,8 +129,6 @@ while run:
     fighter_2.draw(screen)
 
     #check for player death
-    if round_over == False:
-        
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
