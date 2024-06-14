@@ -1,5 +1,6 @@
 import pygame
 from fighter import Fighter
+from flyingnote import FunNote
 
 pygame.init()
 
@@ -25,6 +26,8 @@ last_count_update = pygame.time.get_ticks()
 score = [0, 0] #player scores, [p1, p2]
 match_over = False
 ROUND_OVER_COOLDOWN = 2000
+
+note_y = SCREEN_HEIGHT/4
 
 # define fighter variables
 WARRIOR_SIZE = 162
@@ -96,6 +99,12 @@ character2_data = MARTIAL3_DATA
 fighter_1 = Fighter(1, 200, 350, False, character1_data, character1, character1_sheet)
 fighter_2 = Fighter(2, 1000, 350, True, character2_data, character2, character2_sheet)
 
+#create flying note
+note_1 = FunNote(1500, note_y, RED, "You got this!", score_font)
+note_2 = FunNote(3500, note_y, RED, "I believe in you!", score_font)
+note_3 = FunNote(5000, note_y, RED, "Wow, why haven't you won yet?", score_font)
+note_4 = FunNote(6500, note_y, RED, "HI MR. DAS!!! Do you want to check out my balloon project?", score_font)
+
 # game loop
 run = True
 while run:
@@ -103,6 +112,16 @@ while run:
 
     # draw background
     draw_bg()
+
+    #move notes across screen
+    note_1.draw(screen)
+    note_1.move_note()
+    note_2.draw(screen)
+    note_2.move_note()
+    note_3.draw(screen)
+    note_3.move_note()
+    note_4.draw(screen)
+    note_4.move_note()
 
     # show player stats
     draw_health_bar(fighter_1.health, 20, 20)
